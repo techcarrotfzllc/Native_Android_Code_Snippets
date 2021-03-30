@@ -22,7 +22,10 @@ public class MenuFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.menu_fragment, null);
 
-        CarComponent component = DaggerCarComponent.create();
+//        CarComponent component = DaggerCarComponent.create();
+        CarComponent component = DaggerCarComponent.builder()
+                .dieselEngineModule(new DieselEngineModule(100))
+                .build();
 //        car = component.getCar();
         component.inject(this);
         car.drive();
